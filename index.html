@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<title>QR</title>
+<style>
+
+</style>
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/panino.js"></script>
+<script type="text/javascript" src="js/comunes.js"></script>
+<script type="text/javascript" src="js/paninoAJAX.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script>
+function getPage(p,callback){
+		request(
+			p,
+			function(r){
+				scrollTo(0,0);
+				$('appcontainer').innerHTML=r;
+				if(typeof callback=='function'){
+					callback();
+				}
+			},
+			{}
+		);
+}
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value 
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady() {
+	pictureSource=navigator.camera.PictureSourceType;
+	destinationType=navigator.camera.DestinationType;
+}
+function capturePhotoWithFile() {
+	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+}
+function onFail(message){
+		//alert('Failed because: ' + message);
+}
+	
+function onPhotoURISuccess(imageURI){
+	goToSever(imageURI,640,640,function(){/*callback*/});
+}
+function win(r){
+if(r.response.indexOf('.jpg')==-1){
+	alert(r.response);
+	return;
+}
+		
+	$('log').innerHTML=r.response;
+}
+function fail(r){
+		alert('La imagen no pudo subirse');
+}
+function goToSever(imageURI,maxWidth,maxHeight,callback) {
+			var options = new FileUploadOptions();
+            options.fileKey="foto";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.proceso = "crop";
+          
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+			ns.callback=callback;
+            ft.upload(imageURI, encodeURI('http://servidordeapps.com/proceso3.php?'+(+new Date())), win, fail, options);
+}
+ </script>
+</head>
+
+<body>
+
+
+<div id="appcontainer">
+<form style="padding:100px"><input onclick="capturePhotoWithFile();" name="" type="button" value="tomar foto"></form>
+<div id="log"></div>
+</div>
+</body>
+</html>
