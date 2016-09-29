@@ -39,8 +39,8 @@ function capturePhotoWithFile() {
 	$('log').innerHTML='';
 	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
   encodingType: Camera.EncodingType.JPEG,
-  targetWidth: 500,
-  targetHeight: 500,
+  targetWidth: 1000,
+  targetHeight: 1000,
   saveToPhotoAlbum: false });
 }
 function onFail(message){
