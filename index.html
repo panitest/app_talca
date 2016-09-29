@@ -36,7 +36,12 @@ function onDeviceReady() {
 	destinationType=navigator.camera.DestinationType;
 }
 function capturePhotoWithFile() {
-	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,allowEdit : true,
+  encodingType: Camera.EncodingType.JPEG,
+  targetWidth: 100,
+  targetHeight: 100,
+  popoverOptions: CameraPopoverOptions,
+  saveToPhotoAlbum: false });
 }
 function onFail(message){
 		//alert('Failed because: ' + message);
