@@ -133,8 +133,8 @@ var panino=(function(){
 		}
 	}	
 })();
-var $=panino.get;
-var $$=panino.getByCollection;
+var _=panino.get;
+var __=panino.getByCollection;
 panino.getO(window).addEvent('unload',panino.unregisterAllEvents);
 var domCompatible=function(){
 	/*---- dom compat ----*/

@@ -5,22 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<title>QR</title>
-<style>
-
-</style>
+<title>Talca</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="santander.css">
+  <link href="querys.css" rel="stylesheet" >
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/panino.js"></script>
 <script type="text/javascript" src="js/comunes.js"></script>
 <script type="text/javascript" src="js/paninoAJAX.js"></script>
-<script type="text/javascript" src="js/utils.js"></script>
 <script>
 function getPage(p,callback){
 		request(
 			p,
 			function(r){
 				scrollTo(0,0);
-				$('appcontainer').innerHTML=r;
+				_('appcontainer').innerHTML=r;
 				if(typeof callback=='function'){
 					callback();
 				}
@@ -36,7 +40,7 @@ function onDeviceReady() {
 	destinationType=navigator.camera.DestinationType;
 }
 function capturePhotoWithFile() {
-	$('log').innerHTML='';
+	_('log').innerHTML='';
 	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
   encodingType: Camera.EncodingType.JPEG,
   targetWidth: 1000,
@@ -56,7 +60,7 @@ if(r.response.indexOf('.jpg')==-1){
 	return;
 }
 		
-	$('log').innerHTML=r.response;
+	alert(r.response);
 }
 function fail(r){
 		alert('La imagen no pudo subirse');
@@ -81,11 +85,14 @@ function goToSever(imageURI,maxWidth,maxHeight,callback) {
 </head>
 
 <body>
-
-
-<div id="appcontainer">
-<form style="padding:100px"><input onclick="capturePhotoWithFile();" name="" type="button" value="tomar foto"></form>
-<div id="log"></div>
+<div class="headerhome"></div>
+<div class="container">
+    <div class="col-sm-11 login2">
+    <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
+    <button type="button" class="botonescanear font-opensans" onclick="capturePhotoWithFile();">ESCANEAR</button>
+  </div>
+</div>
+<div class="piehome"></div>
 </div>
 </body>
 </html>

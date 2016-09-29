@@ -1,0 +1,36 @@
+
+
+@media (max-width: 767px) {
+	.container {width: 100%;}
+.atras{ left:3%; width:6%;}
+.hamburguesa{right:3%; width:6%; }
+.textboton{ font-size:1.5em; }
+.fontheader{font-size:25px;}
+.center{ max-width:85%;}
+.piegeneral{  font-size:15px; }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+.atras{ left:3%; width:5%;}
+.hamburguesa{right:3%; width:5%; }
+.textboton{   font-size:1.5em; }
+.fontheader{font-size:40px;}
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+.atras{ left:3%; width:3%;}
+.hamburguesa{right:3%; width:3%; }
+.textboton{  font-size:1.5em; }
+.fontheader{font-size:40px;}
+
+}
+
+@media (min-width: 1200px) {
+.atras{ left:3%; width:3%;}
+.hamburguesa{right:3%; width:3%; }
+.textboton{ font-size:1.5em;}
+.fontheader{font-size:40px;}
+
+}
+
