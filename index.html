@@ -79,7 +79,8 @@ function goToSever(imageURI,maxWidth,maxHeight,callback) {
  
             var ft = new FileTransfer();
 			ns.callback=callback;
-            ft.upload(imageURI, encodeURI('http://servidordeapps.com/proceso3.php?'+(+new Date())), win, fail, options);
+            //ft.upload(imageURI, encodeURI('http://servidordeapps.com/proceso3.php?'+(+new Date())), win, fail, options);
+			ft.upload(imageURI, encodeURI('http://ocr.acrons.net/proceso3.php?'+(+new Date())), win, fail, options);
 }
  </script>
 </head>
