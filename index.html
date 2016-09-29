@@ -36,7 +36,7 @@ function onDeviceReady() {
 	destinationType=navigator.camera.DestinationType;
 }
 function capturePhotoWithFile() {
-	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
 }
 function onFail(message){
 		//alert('Failed because: ' + message);
