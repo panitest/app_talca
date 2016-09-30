@@ -74,7 +74,9 @@ if(r.response.indexOf('.jpg')==-1){
 }
 	*/	
 	//alert(r.response);
-	var rtaws='[\"Q Search\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\\u2018 \\u2018 \\u2018 \\u2018 DmMod\\ufb02l-d -\",\"wk Thduy, 1:59 PM\",\"!O160929_13_34_10.Jpg Today, 1:33 PM\",\"\",\"I\\u201c Tnday, 11:19 AM\",\"\",\"Ink Argentlna 01611100 Today, 11.16 AM\",\".INVOICE_DODS_FAOOUDSZ461pdl Today. 6:34 AM\",\"\",\")r [1L7Jn Yasmnmv. 4:04 PM\",\"\",\"\\\"1 a G talca frontbmp Open With Preview m 3\",\"\",\"589686 01 12053290 0 6\",\"ALVARO J FLORES VENEGAS\",\"\",\"v2 070 9294 ESTUDIANTE\",\"INGENIERIA INDUSTRIAL CIVIL\",\"\",\"m W, ******* , Mmzmimwm\",\"(13.90\\\" AM] 5 2016 9 16 AM\",\"dams X\\u2018sx\",\"\",\"PG\",\"\",\"yummom: 4 Um-nvhnul; m .. w H , rm:\",\"\",\"\",\"\",\"\",\"\"]';
+	/*var rtaws='[\"Q Search\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\\u2018 \\u2018 \\u2018 \\u2018 DmMod\\ufb02l-d -\",\"wk Thduy, 1:59 PM\",\"!O160929_13_34_10.Jpg Today, 1:33 PM\",\"\",\"I\\u201c Tnday, 11:19 AM\",\"\",\"Ink Argentlna 01611100 Today, 11.16 AM\",\".INVOICE_DODS_FAOOUDSZ461pdl Today. 6:34 AM\",\"\",\")r [1L7Jn Yasmnmv. 4:04 PM\",\"\",\"\\\"1 a G talca frontbmp Open With Preview m 3\",\"\",\"589686 01 12053290 0 6\",\"ALVARO J FLORES VENEGAS\",\"\",\"v2 070 9294 ESTUDIANTE\",\"INGENIERIA INDUSTRIAL CIVIL\",\"\",\"m W, ******* , Mmzmimwm\",\"(13.90\\\" AM] 5 2016 9 16 AM\",\"dams X\\u2018sx\",\"\",\"PG\",\"\",\"yummom: 4 Um-nvhnul; m .. w H , rm:\",\"\",\"\",\"\",\"\",\"\"]';
+	*/
+	var rtaws=r.response;
 	var v=JSON.parse(rtaws);
 	if(v.length<4){
 		getPage('home.html');
