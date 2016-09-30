@@ -138,6 +138,23 @@ function parseRta(rta){
 			break;
 		}
 	}
+	if(!ns.nombre_usuario && !ns.codigo && !ns.profesion && !ns.nro_tarjeta){
+		getPage('home.html');
+		alert('Por favor escanee la tarjeta nuevamente');
+		return;
+	}
+	if(!ns.nombre_usuario){
+		ns.nombre_usuario='';
+	}
+	if(!ns.codigo){
+		ns.codigo='';
+	}
+	if(!ns.profesion){
+		ns.profesion='';
+	}
+	if(!ns.nro_tarjeta){
+		ns.nro_tarjeta='';
+	}
 	getPage('perfil.html',completarForm);
 }
 function completarForm(){
