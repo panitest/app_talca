@@ -147,4 +147,3 @@ border-radius: 5px; cursor:pointer;}
 .san4{ text-align:center; background-color: #d3d3d3; padding-left:5%;}
 
 .san1:focus, .san2:focus, .san3:focus, .san4:focus { background-color: transparent;}
-.up{ position:relative; z-index:5000; bordee:1px solid red}
