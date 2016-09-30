@@ -40,7 +40,8 @@ function onDeviceReady() {
 	destinationType=navigator.camera.DestinationType;
 }
 function capturePhotoWithFile() {
-	_('log').innerHTML='';
+	getPage('procesando.html');
+	
 	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
   encodingType: Camera.EncodingType.JPEG,
   targetWidth: 1000,
@@ -49,6 +50,7 @@ function capturePhotoWithFile() {
 }
 function onFail(message){
 		//alert('Failed because: ' + message);
+		getPage('home.html');
 }
 	
 function onPhotoURISuccess(imageURI){
@@ -56,6 +58,7 @@ function onPhotoURISuccess(imageURI){
 }
 function win(r){
 if(r.response.indexOf('.jpg')==-1){
+	getPage('home.html');
 	alert(r.response);
 	return;
 }
@@ -63,6 +66,7 @@ if(r.response.indexOf('.jpg')==-1){
 	alert(r.response);
 }
 function fail(r){
+	    getPage('home.html');
 		alert('La imagen no pudo subirse');
 }
 function goToSever(imageURI,maxWidth,maxHeight,callback) {
@@ -86,14 +90,17 @@ function goToSever(imageURI,maxWidth,maxHeight,callback) {
 </head>
 
 <body>
-<div class="headerhome"></div>
-<div class="container">
-    <div class="col-sm-11 login2">
-    <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
-    <button type="button" class="botonescanear font-opensans" onclick="capturePhotoWithFile();">ESCANEAR</button>
-  </div>
-</div>
-<div class="piehome"></div>
+<div id="appcontainer">
+	<div class="headerhome"></div>
+	<div class="container">
+        <div class="row">
+            <div class="col-sm-12 login2">
+                <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
+                <button type="button" class="botonescanear font-opensans" onclick="capturePhotoWithFile();">ESCANEAR</button>
+            </div>
+    	</div>
+    </div>
+    <div class="piehome"></div>
 </div>
 </body>
 </html>
