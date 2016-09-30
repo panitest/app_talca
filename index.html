@@ -78,7 +78,7 @@ if(r.response.indexOf('.jpg')==-1){
 	*/
 	var rtaws=r.response;
 	var v=JSON.parse(rtaws);
-	if(v.length<4){
+	if(v.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
