@@ -28,6 +28,11 @@ function getPage(p,callback){
 				if(typeof callback=='function'){
 					callback();
 				}
+				if(_('navfixed')){
+					document.body.style.paddingTop=-_('navfixed').offsetHeight+'px';
+				}else{
+					document.body.style.paddingTop=0;
+				}
 			},
 			{}
 		);
