@@ -80,7 +80,7 @@ if(r.response.indexOf('.jpg')==-1){
 	
 	var rtaws=r.response;
 	rtaws=rtaws.trim();
-	alert(rtaws);
+	_('appcontainer').innerHTML=rtaws;
 	if(rtaws.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
