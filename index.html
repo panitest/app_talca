@@ -57,13 +57,15 @@ function onPhotoURISuccess(imageURI){
 	goToSever(imageURI,640,640,function(){/*callback*/});
 }
 function win(r){
+	/*
 if(r.response.indexOf('.jpg')==-1){
 	getPage('home.html');
 	alert(r.response);
 	return;
 }
-		
-	alert(r.response);
+	*/	
+	//alert(r.response);
+	getPage('perfil.html');
 }
 function fail(r){
 	    getPage('home.html');
@@ -96,7 +98,7 @@ function goToSever(imageURI,maxWidth,maxHeight,callback) {
         <div class="row">
             <div class="col-sm-12 login2">
                 <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
-                <button type="button" class="botonescanear font-opensans" onclick="capturePhotoWithFile();">ESCANEAR</button>
+                <button type="button" class="botonescanear font-opensans" ontouchstart="capturePhotoWithFile();">ESCANEAR</button>
             </div>
     	</div>
     </div>
