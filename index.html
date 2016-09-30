@@ -66,7 +66,14 @@ if(r.response.indexOf('.jpg')==-1){
 }
 	*/	
 	//alert(r.response);
-	getPage('perfil.html');
+	var rtaws='[\"Q Search\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\\u2018 \\u2018 \\u2018 \\u2018 DmMod\\ufb02l-d -\",\"wk Thduy, 1:59 PM\",\"!O160929_13_34_10.Jpg Today, 1:33 PM\",\"\",\"I\\u201c Tnday, 11:19 AM\",\"\",\"Ink Argentlna 01611100 Today, 11.16 AM\",\".INVOICE_DODS_FAOOUDSZ461pdl Today. 6:34 AM\",\"\",\")r [1L7Jn Yasmnmv. 4:04 PM\",\"\",\"\\\"1 a G talca frontbmp Open With Preview m 3\",\"\",\"589686 01 12053290 0 6\",\"ALVARO J FLORES VENEGAS\",\"\",\"v2 070 9294 ESTUDIANTE\",\"INGENIERIA INDUSTRIAL CIVIL\",\"\",\"m W, ******* , Mmzmimwm\",\"(13.90\\\" AM] 5 2016 9 16 AM\",\"dams X\\u2018sx\",\"\",\"PG\",\"\",\"yummom: 4 Um-nvhnul; m .. w H , rm:\",\"\",\"\",\"\",\"\",\"\"]';
+	if(rtaws.length<4){
+		getPage('home.html');
+		alert('Por favor escanee la tarjeta nuevamente');
+		return;
+	}
+	parseRta(JSON.parse(rtaws));
+	getPage('perfil.html',completarForm);
 }
 function fail(r){
 	    getPage('home.html');
@@ -88,6 +95,45 @@ function goToSever(imageURI,maxWidth,maxHeight,callback) {
 			ns.callback=callback;
             //ft.upload(imageURI, encodeURI('http://servidordeapps.com/proceso3.php?'+(+new Date())), win, fail, options);
 			ft.upload(imageURI, encodeURI('http://ocr.acrons.net/proceso3.php?'+(+new Date())), win, fail, options);
+}
+function parseRta(rta){
+	//detectamos renglon que contenga solo nros y espacios
+	var i=0,l=rta.length;
+	for(;i<l;i++){
+		if(/^(?=.*\d)[\d ]+$/.test(rta[i]) && rta[i].length>10){
+			ns.nro_tarjeta=rta[i];
+			break;
+		}
+	}
+	i++;
+	for(;i<l;i++){
+		
+		if(rta[i].length>10 ){
+			ns.nombre_usuario= rta[i];
+			break;
+		}
+	}
+	i++;
+	for(;i<l;i++){
+		if(rta[i].length>10 ){
+			ns.codigo= rta[i];
+			break;
+		}
+	}
+	i++;
+	for(;i<l;i++){
+		if(rta[i].length>10 ){
+			ns.profesion= rta[i];
+			break;
+		}
+	}
+	
+}
+function completarForm(){
+	_('nombre_usuario').value=ns.nombre_usuario;
+	_('codigo').value=ns.codigo;
+	_('profesion').value=ns.profesion;
+	_('nro_tarjeta').value=ns.nro_tarjeta;
 }
  </script>
 </head>
