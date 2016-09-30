@@ -102,7 +102,7 @@ border-radius: 5px; cursor:pointer;}
 		  margin:auto; padding-left:8%;	  
 		  }
 
-.beneficios{ display:block; width:100%; background-color:#FFF;}
+.beneficios{ display:block; width:100%; background-color:#FFF; overflow-x:hidden}
 
 
 .form-santander {
