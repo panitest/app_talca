@@ -77,8 +77,10 @@ if(r.response.indexOf('.jpg')==-1){
 	/*
 	var rtaws='[\"ummuun n\",\"\",\"TALCA\",\"\",\"589710 50 00122444 8 1\",\"\",\"CARLOS FIGUEROA L.\",\"12 884.508-9 ESTUDIANTE\",\"\",\"& Samandet\",\"Santiago\",\"\",\" \",\"\"]';
 	*/
+	
 	var rtaws=r.response;
 	rtaws=rtaws.trim();
+	alert(rtaws);
 	if(rtaws.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
