@@ -80,22 +80,27 @@ if(r.response.indexOf('.jpg')==-1){
 	
 	var rtaws=r.response;
 	rtaws=rtaws.trim();
-	_('appcontainer').innerHTML=rtaws;
+	
 	if(rtaws.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
 	}
+	var v=rtaws.split('[').join('').split(']').join('').split('\",\"');
+	var vv=[];
+	for(var j in v){
+		vv.push(v[j]);
+	}
+	_('appcontainer').innerHTML=vv.join('<br>');
+	//var v=JSON.parse(rtaws);
+	//alert(v.length);
 	
-	//
-	var v=JSON.parse(rtaws);
-	alert(v.length);
-	if(v.length<3){
+	if(vv.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
 	}
-	parseRta(v);
+	parseRta(vv);
 	
 }
 function fail(r){
