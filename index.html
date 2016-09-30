@@ -80,29 +80,22 @@ if(r.response.indexOf('.jpg')==-1){
 	
 	var rtaws=r.response;
 	rtaws=rtaws.trim();
-	//alert(rtaws);
+	alert(rtaws);
 	if(rtaws.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
 	}
 	
-	var v=rtaws.split('[').join('').split(']').join('').split('\",\"');
-	var vv=[];
-	for(var j in v){
-		vv.push(v[j]);
-	}
-	
-	
 	//
-	//var v=JSON.parse(rtaws);
-	//alert(vv.length);
-	if(vv.length<3){
+	var v=JSON.parse(rtaws);
+	alert(v.length);
+	if(v.length<3){
 		getPage('home.html');
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
 	}
-	parseRta(vv);
+	parseRta(v);
 	
 }
 function fail(r){
