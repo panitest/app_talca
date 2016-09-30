@@ -86,12 +86,13 @@ if(r.response.indexOf('.jpg')==-1){
 		alert('Por favor escanee la tarjeta nuevamente');
 		return;
 	}
-	var v=rtaws.split('[').join('').split(']').join('').split('\",\"');
+	var v=rtaws.split('[').join('').split(']').join('').split('\\",\\"');
 	var vv=[];
 	for(var j in v){
 		vv.push(v[j]);
 	}
 	_('appcontainer').innerHTML=vv.join('<br>');
+	return;
 	//var v=JSON.parse(rtaws);
 	//alert(v.length);
 	
