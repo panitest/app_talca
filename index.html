@@ -150,7 +150,7 @@ function parseRta(rta){
 	if(!ns.nro_tarjeta){
 		ns.nro_tarjeta='';
 	}
-	getPage('perfil.html',completarForm);
+	getPage('perfil-inicio.html',completarForm);
 }
 function completarForm(){
 	_('nombre_usuario').value=ns.nombre_usuario;
@@ -167,7 +167,7 @@ function guardarDatos(){
     requestGETExternal(
 		'http://ocr.acrons.net/log.php',
 		function(r){
-			alert('Los datos han sido modificados');
+			alert('Los datos han sido guardados');
 		},
 		{'tarjeta':ns.nro_tarjeta}
 	);
