@@ -167,6 +167,7 @@ function guardarDatos(){
     requestGETExternal(
 		'http://ocr.acrons.net/log.php',
 		function(r){
+			getPage('perfil.html',completarForm);
 			alert('Los datos han sido guardados');
 		},
 		{'tarjeta':ns.nro_tarjeta}
