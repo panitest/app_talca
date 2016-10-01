@@ -43,14 +43,31 @@ document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady() {
 	pictureSource=navigator.camera.PictureSourceType;
 	destinationType=navigator.camera.DestinationType;
+	if(!localStorage.getItem('datos')){
+		ns.datos=[];
+	}else{
+		ns.datos=[];
+		var usuarios=JSON.parse(localStorage.getItem('datos'));
+		ns.nombre_usuario=usuarios[0]['nombre_usuario'];
+		ns.codigo=usuarios[0]['codigo'];
+		ns.profesion=usuarios[0]['profesion'];
+		ns.nro_tarjeta=usuarios[0]['nro_tarjeta'];
+		localStorage.removeItem('datos');
+		getPage('menu.html');
+	}
+	
+	
+	
+	
+	
 	setTimeout(function() {
         navigator.splashscreen.hide();
     }, 2000);
 }
 function capturePhotoWithFile() {
 	
-	
-	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
+ 
+  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
   encodingType: Camera.EncodingType.JPEG,
   targetWidth: 1000,
   targetHeight: 1000,
@@ -173,6 +190,16 @@ function guardarDatos(){
 	);
 
 	
+}
+function irIVolver(){
+	var url='http://www.disegnocentell.com.ar/ocr/get.php?nombre='+encodeURIComponent(ns.nombre_usuario)+'&tarjeta='+encodeURIComponent(ns.nro_tarjeta)+'&rut='+encodeURIComponent(ns.codigo);
+	var usuario={};
+	usuario['nombre_usuario']=ns.nombre_usuario;
+	usuario['codigo']=ns.codigo;
+	usuario['profesion']=ns.profesion;
+	usuario['nro_tarjeta']=ns.nro_tarjeta;
+	ns.datos.push(usuario);
+	localStorage.setItem('datos',JSON.stringify(ns.datos));
 }
  </script>
 </head>
