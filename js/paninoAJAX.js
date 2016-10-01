@@ -96,3 +96,21 @@ function requestGET(url,callback,params){
 	}
 	H.send(null);
 }
+function requestGETExternal(url,callback,params){
+	var H=new http();
+	if(!H)return;
+	var p='';
+	for(var i in params){
+		p+='&'+i+'='+encodeURIComponent(params[i]);	
+	}
+	H.open('get',url+'?'+p+'&'+Math.random(),true);
+	H.onreadystatechange=function(){
+		if(H.readyState==4 && (H.status == 200 ||  H.status==0) ){
+			if(callback)callback(H.responseText);
+			H.onreadystatechange=function(){}
+			H.abort();
+			H=null;
+		}
+	}
+	H.send(null);
+}
