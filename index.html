@@ -66,7 +66,9 @@ function onDeviceReady() {
 }
 function capturePhotoWithFile() {
 	
- 
+  ns.datos=[];
+  localStorage.removeItem('datos');
+  ns.nombre_usuario=ns.codigo=ns.profesion=ns.nro_tarjeta='';
   navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 100, destinationType: Camera.DestinationType.FILE_URI,
   encodingType: Camera.EncodingType.JPEG,
   targetWidth: 1000,
@@ -85,8 +87,8 @@ function onPhotoURISuccess(imageURI){
 function win(r){
 	
 	
-	//var rtaws=r.response;
-	var rtaws='589710 50 00122444 8 1__()__()__CARLOS FIGUEROA L.__()__()__12 884.508-9 ESTUDIANTE';
+	var rtaws=r.response;
+	//var rtaws='589710 50 00122444 8 1__()__()__CARLOS FIGUEROA L.__()__()__12 884.508-9 ESTUDIANTE';
 	
 	rtaws=rtaws.trim();
 	var v=rtaws.split('__()__()__');
@@ -192,7 +194,7 @@ function guardarDatos(){
 	
 }
 function irIVolver(){
-	var url='http://www.disegnocentell.com.ar/ocr/get.php?nombre='+encodeURIComponent(ns.nombre_usuario)+'&tarjeta='+encodeURIComponent(ns.nro_tarjeta)+'&rut='+encodeURIComponent(ns.codigo);
+	var url='http://ocr.acrons.net/get.php?nombre='+encodeURIComponent(ns.nombre_usuario)+'&tarjeta='+encodeURIComponent(ns.nro_tarjeta)+'&rut='+encodeURIComponent(ns.codigo);
 	var usuario={};
 	usuario['nombre_usuario']=ns.nombre_usuario;
 	usuario['codigo']=ns.codigo;
