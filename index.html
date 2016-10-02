@@ -204,22 +204,44 @@ function irIVolver(){
 	localStorage.setItem('datos',JSON.stringify(ns.datos));
 	location=url;
 }
+function captureBarCode(){
+	cordova.plugins.barcodeScanner.scan(
+		function(result){
+ 			var code=result.text || 0;
+			if(!code){
+				getPage('home.html');
+				alert('Por favor el código nuevamente');
+				return;
+			}
+			var url='http://ocr.acrons.net/get_code.php?code='+code;
+			location=url;
+        },
+		function(error){
+			getPage('home.html');
+			alert('Por favor el código nuevamente');
+		}
+	);
+}
  </script>
 </head>
 
 <body>
 <div id="appcontainer">
 	<div class="headerhome"></div>
-	<div class="container">
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10 login2">
-                <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
-                 <div  class="botonescanear font-opensans" onClick="capturePhotoWithFile();">ESCANEAR</div>
+	<div class="container-fluid">
+   		<div class="row">
+   			
+            <div class="col-sm-12 login2">
+            <img class="img-responsive" src="images/bienvenidos.png" alt="Bienvenido">
+            <div  class="botonescanear font-opensans"  onClick="capturePhotoWithFile();">ESCANEAR</div>
+           <div class="row">
+        		<div  class="botonescanear font-opensans" onClick="captureBarCode()">COD. DE BARRAS </div>
+           </div>
             </div>
-            <div class="col-sm-1"></div>
-    	</div>
-    </div>
+    		
+  		</div>
+        
+	</div>
     <div class="piehome"></div>
 </div>
 </body>
